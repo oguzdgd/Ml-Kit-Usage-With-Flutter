@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ml_kit_flutter/common/create_bottom_nav_item.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -12,46 +13,21 @@ class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      bottomNavigationBar: NavigationBar(
-        elevation: 0,
-        selectedIndex: currentIndexPage,
-        onDestinationSelected: (int index) {
-          setState(() {
-            currentIndexPage = index;
-          });
-        },
-        destinations: [
-          createNavItem(TabItem.faceDetection),
-          createNavItem(TabItem.imageLabeling),
-        ],
-      ),
-      body: Column(
-        children: [Text("deneme")],
-      ),
-    );
+        backgroundColor: Colors.white,
+        bottomNavigationBar: NavigationBar(
+          elevation: 0,
+          selectedIndex: currentIndexPage,
+          onDestinationSelected: (int index) {
+            setState(() {
+              currentIndexPage = index;
+            });
+          },
+          destinations: [
+            createNavItem(TabItem.imageLabeling),
+            createNavItem(TabItem.faceDetection),
+            createNavItem(TabItem.textRecognition),
+          ],
+        ),
+        body: getViewForIndex(currentIndexPage));
   }
-
-  NavigationDestination createNavItem(TabItem tabItem) {
-    final currentTab = TabItemData.tabs[tabItem]!;
-    return NavigationDestination(icon: currentTab.icon, label: currentTab.title);
-  }
-}
-
-enum TabItem { imageLabeling, faceDetection, textRecognition }
-
-class TabItemData {
-  String title;
-  Widget icon;
-
-  TabItemData({ required this.title, required this.icon});
-
-  static Map<TabItem, TabItemData> tabs = {
-    TabItem.imageLabeling: TabItemData(
-        title: "Image Labeling", icon: Icon(Icons.image)),
-    TabItem.faceDetection: TabItemData(
-        title: "Face Detection", icon: Icon(Icons.face)),
-    TabItem.textRecognition: TabItemData(
-        title: "Text Recognition", icon: Icon(Icons.text_format))
-  };
 }
