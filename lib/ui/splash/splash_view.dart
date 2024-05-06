@@ -7,13 +7,14 @@ class SplashView extends StackedView<SplashViewModel> {
 
   @override
   Widget builder(BuildContext context,SplashViewModel viewModel,Widget? child) {
+    viewModel.init();
     return const Scaffold(
-      body: Column(
-        children: [
-          Text("ML KİT EXAMPLES")
-        ],
+      backgroundColor: Colors.black,
+      body: Center(
+        child: Text("ML KİT EXAMPLES",style: TextStyle(color: Colors.white),),
       ),
     );
+
   }
 
 
@@ -21,5 +22,6 @@ class SplashView extends StackedView<SplashViewModel> {
   @override
   SplashViewModel viewModelBuilder(BuildContext context) {
     return SplashViewModel();
+
   }
 }
