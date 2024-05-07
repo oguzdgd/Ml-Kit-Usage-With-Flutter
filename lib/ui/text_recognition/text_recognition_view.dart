@@ -8,7 +8,6 @@ class TextRecognitionView extends StackedView<TextRecognitionViewModel> {
   @override
   Widget builder(
       BuildContext context, TextRecognitionViewModel viewModel, Widget? child) {
-    viewModel.init();
     return const Scaffold(
       backgroundColor: Colors.black,
       body: Center(

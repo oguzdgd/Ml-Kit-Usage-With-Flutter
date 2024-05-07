@@ -1,14 +1,35 @@
-import 'package:flutter/material.dart';
-import 'package:ml_kit_flutter/ui/image_labeling/image_labeling_view_model.dart';
-import 'package:stacked/stacked.dart';
 
-class ImageLabelingView extends StackedView<ImageLabelingViewModel> {
+import 'package:flutter/material.dart';
+import 'package:google_mlkit_image_labeling/google_mlkit_image_labeling.dart';
+
+class ImageLabelingView extends StatefulWidget {
   const ImageLabelingView({super.key});
 
   @override
-  Widget builder(
-      BuildContext context, ImageLabelingViewModel viewModel, Widget? child) {
-    viewModel.init();
+  State<ImageLabelingView> createState() => _ImageLabelingViewState();
+}
+
+class _ImageLabelingViewState extends State<ImageLabelingView> {
+  late ImageLabeler _imageLabeler;
+  bool _canProcess = false;
+  bool _isBusy = false;
+  CustomPaint? _customPaint;
+  String? _text;
+
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: Colors.black,
       body: Center(
@@ -18,10 +39,5 @@ class ImageLabelingView extends StackedView<ImageLabelingViewModel> {
         ),
       ),
     );
-  }
-
-  @override
-  ImageLabelingViewModel viewModelBuilder(BuildContext context) {
-    return ImageLabelingViewModel();
   }
 }

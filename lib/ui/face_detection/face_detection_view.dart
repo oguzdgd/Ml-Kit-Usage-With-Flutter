@@ -8,7 +8,6 @@ class FaceDetectionView extends StackedView<FaceDetectionViewModel> {
   @override
   Widget builder(
       BuildContext context, FaceDetectionViewModel viewModel, Widget? child) {
-    viewModel.init();
     return const Scaffold(
       backgroundColor: Colors.black,
       body: Center(

@@ -8,4 +8,5 @@ class ImageLabelingViewModel extends MainViewModel {
       NavigationService().pushNamedAndRemoveUntil(Routes.mainView);
     });
   }
+ 
 }
