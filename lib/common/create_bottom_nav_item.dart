@@ -29,7 +29,7 @@ NavigationDestination createNavItem(TabItem tabItem) {
 Widget getViewForIndex(int index) {
   switch (index) {
     case 0:
-      return const ImageLabelingView();
+      return  ImageLabelView();
     case 1:
       return const FaceDetectionView();
     case 2:
